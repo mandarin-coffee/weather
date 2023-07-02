@@ -1,6 +1,6 @@
 # Настройка проекта:
 
-- npm init -y
+- npm init -y <br> _(инициализация npm проекта)_
 - npm install --save-dev jest <br> _(установка jest)_
 - npx jest --init <br> (_настройка jest)_
 - npm install -D jest-environment-jsdom <br> _(установка jsDom)_
