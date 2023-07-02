@@ -11,6 +11,7 @@
 - npm install eslint-plugin-import --save-dev <br> (_установка плагина для import в eslint)_
 - npm i prettier -D <br> _(установка prettier)_
 - npm i eslint-config-prettier -D <br> _(установка конфига prettier)_
+- npx mrm lint-staged <br> _(установка husky pre-commit)_
 
 
 ## Файлы конфигурации:

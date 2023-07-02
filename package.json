@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --coverage",
     "lint": "prettier --check . && eslint .",
-    "lint:fix": "prettier --write . && eslint . --fix"
+    "lint:fix": "prettier --write . && eslint . --fix",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -25,5 +26,9 @@
   },
   "dependencies": {
     "eslint-plugin-jest": "^27.2.2"
+  },
+  "lint-staged": {
+    "*.js": "eslint --fix",
+    "*.{js,css}": "prettier --write"
   }
 }
