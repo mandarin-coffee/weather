@@ -1,23 +1,23 @@
-Настройка проекта:
+# Настройка проекта:
 
 - npm init -y
-- npm install --save-dev jest (установка jest)
-- npx jest --init (настройка jest)
-- npm install -D jest-environment-jsdom (установка jsDom)
-- npm install --save-dev babel-jest @babel/core @babel/preset-env (Решение конфликта с import)
-- npm i eslint -D (установка eslint)
-- npx eslint --init (настройка eslint)
-- npm i eslint-plugin-jest (установка плагина eslint для jest)
-- npm install eslint-plugin-import --save-dev (установка плагина для import в eslint)
-- npm i prettier -D (установка prettier)
-- npm i eslint-config-prettier -D (установка конфига prettier)
+- npm install --save-dev jest <br> _(установка jest)_
+- npx jest --init <br> (_настройка jest)_
+- npm install -D jest-environment-jsdom <br> _(установка jsDom)_
+- npm install --save-dev babel-jest @babel/core @babel/preset-env <br> _(Решение конфликта с import)_
+- npm i eslint -D <br> _(установка eslint)_
+- npx eslint --init <br> _(настройка eslint)_
+- npm i eslint-plugin-jest <br> _(установка плагина eslint для jest)_
+- npm install eslint-plugin-import --save-dev <br> (_установка плагина для import в eslint)_
+- npm i prettier -D <br> _(установка prettier)_
+- npm i eslint-config-prettier -D <br> _(установка конфига prettier)_
 
 
-Файлы конфигурации:
+## Файлы конфигурации:
 
-jest:
+### jest:
 - jest.config.js
 - babel.config.js
 
-eslint & prettier:
+### eslint & prettier:
 - .eslintrc.js
