@@ -57,6 +57,7 @@ module.exports = {
     watchFiles: "public/*",
     compress: true,
     port: 9000,
+    historyApiFallback: true,
   },
   optimization: {
     minimizer: [

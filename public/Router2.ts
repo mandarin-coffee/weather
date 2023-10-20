@@ -2,11 +2,11 @@
 
 // IMPLEMENTATION
 function Router() {
-  let listeners:any = [];
+  let listeners: any = [];
   let currentPath = location.pathname;
-  let previousPath:any = null;
+  let previousPath: any = null;
 
-  const isMatch = (match:any, path:any) =>
+  const isMatch = (match: any, path: any) =>
     (match instanceof RegExp && match.test(path)) ||
     (typeof match === "function" && match(path)) ||
     (typeof match === "string" && match === path);
@@ -59,12 +59,13 @@ function Router() {
 
 const createRender =
   // @ts-ignore
-  (content) =>
+
+    (content) =>
     // @ts-ignore
-  (...args) => {
-    console.info(`${content} args=${JSON.stringify(args)}`);
-    //document.getElementById("root").innerHTML = `<h2>${content}</h2>`;
-  };
+    (...args) => {
+      console.info(`${content} args=${JSON.stringify(args)}`);
+      //document.getElementById("root").innerHTML = `<h2>${content}</h2>`;
+    };
 
 const router = Router();
 
