@@ -45,10 +45,11 @@
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.23.2",
-    "eslint-plugin-jest": "^27.2.2"
+    "eslint-plugin-jest": "^27.2.2",
+    "npm": "^10.2.1"
   },
   "lint-staged": {
-    "*.js": "eslint --fix",
-    "*.{js,css}": "prettier --write"
+    "*.{js, ts}": "eslint --fix",
+    "*.{js,css, ts}": "prettier --write"
   }
 }

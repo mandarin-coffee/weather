@@ -1,7 +1,10 @@
 export function Router() {
+  // @ts-ignore
   const go = (url, state) => {
     console.log(url);
+    // eslint-disable-next-line no-restricted-globals
     console.log(history);
+    // eslint-disable-next-line no-restricted-globals
     history.pushState(state, url, url);
   };
 
@@ -10,6 +13,7 @@ export function Router() {
 
 const menuLinks = document.querySelectorAll("nav ul li a");
 
+// @ts-ignore
 const router = new Router();
 
 console.log(router);
@@ -24,7 +28,7 @@ menuLinks.forEach((el) => {
 
 console.log(menuLinks);
 
-window.addEventListener("popstate", (event) => {
+window.addEventListener("popstate", () => {
   // Здесь вы можете обновить содержимое страницы на основе нового URL и state
   console.log("URL изменился на", window.location.pathname);
 });

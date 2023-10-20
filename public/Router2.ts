@@ -2,15 +2,16 @@
 
 // IMPLEMENTATION
 function Router() {
-  let listeners = [];
+  let listeners:any = [];
   let currentPath = location.pathname;
-  let previousPath = null;
+  let previousPath:any = null;
 
-  const isMatch = (match, path) =>
+  const isMatch = (match:any, path:any) =>
     (match instanceof RegExp && match.test(path)) ||
     (typeof match === "function" && match(path)) ||
     (typeof match === "string" && match === path);
 
+  // @ts-ignore
   const handleListener = ({ match, onEnter }) => {
     const args = { currentPath, previousPath, state: history.state };
 
@@ -22,6 +23,7 @@ function Router() {
   const generateId = () => {
     const getRandomNumber = () =>
       Math.floor(Math.random() * listeners.length * 1000);
+    // @ts-ignore
     const doesExist = (id) => listeners.find((listener) => listener.id === id);
 
     let id = getRandomNumber();
@@ -31,6 +33,7 @@ function Router() {
     return id;
   };
 
+  // @ts-ignore
   const on = (match, onEnter) => {
     const id = generateId();
 
@@ -38,7 +41,7 @@ function Router() {
     listeners.push(listener);
     handleListener(listener);
   };
-
+  // @ts-ignore
   const go = (url, state) => {
     previousPath = currentPath;
     history.pushState(state, url, url);
@@ -53,22 +56,31 @@ function Router() {
 }
 
 // USAGE
-const createRender = (content) => (...args) => {
-  console.info(`${content} args=${JSON.stringify(args)}`);
-  //document.getElementById("root").innerHTML = `<h2>${content}</h2>`;
-};
+
+const createRender =
+  // @ts-ignore
+  (content) =>
+    // @ts-ignore
+  (...args) => {
+    console.info(`${content} args=${JSON.stringify(args)}`);
+    //document.getElementById("root").innerHTML = `<h2>${content}</h2>`;
+  };
 
 const router = Router();
 
 router.on(/.*/, createRender("/.*"));
+// @ts-ignore
 router.on((path) => path === "/contacts", createRender("/contacts"));
 router.on("/about", createRender("/about"));
 
 document.body.addEventListener("click", (event) => {
+  // @ts-ignore
   if (!event.target.matches("a")) {
     return;
   }
   event.preventDefault();
+  // @ts-ignore
   let url = event.target.getAttribute("href");
+  // @ts-ignore
   router.go(url);
 });
