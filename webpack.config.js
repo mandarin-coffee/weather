@@ -4,7 +4,10 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = {
-  entry: "./public/index.js",
+  entry: "./public/index.ts",
+  resolve: {
+    extensions: [".js", ".ts"],
+  },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "js/[name]-[chunkhash].js",
@@ -19,13 +22,13 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(?:js|mjs|cjs)$/,
+        test: /\.(?:js|mjs|cjs|ts)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
-          options: {
-            presets: [["@babel/preset-env", { targets: "defaults" }]],
-          },
+          // options: {
+          //   presets: ["@babel/preset-env"],
+          // },
         },
       },
       {

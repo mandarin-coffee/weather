@@ -15,8 +15,9 @@ module.exports = (api) => ({
         corejs: "3.22",
         targets: api.caller((caller) => caller && caller.target === "node")
           ? { node: "current" }
-          : { chrome: "58", ie: "11" },
+          : { chrome: "58" },
       },
     ],
+    "@babel/preset-typescript",
   ],
 });
