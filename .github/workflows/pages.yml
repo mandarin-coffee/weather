@@ -17,8 +17,7 @@ jobs:
           yarn install
       - name: Build
         run: |
-          npx reveal-md lessons/ --static dist
-          rsync -a -r lessons/ dist/
+          npm run build
 
       - name: Deploy
         # https://github.com/marketplace/actions/deploy-to-github-pages
