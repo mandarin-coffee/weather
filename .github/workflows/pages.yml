@@ -14,7 +14,7 @@ jobs:
 
       - name: Install Packages
         run: |
-          npm install
+          yarn install
       - name: Build
         run: |
           npx reveal-md lessons/ --static dist
