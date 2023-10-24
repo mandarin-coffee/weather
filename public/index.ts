@@ -5,11 +5,12 @@ import "./Router2.ts";
 import { setLocalStorage, getLocalStorage } from "./aside.ts";
 
 if (process.env.NODE_ENV === "production") {
-  const navigation: Element = document.querySelector('.head-row');
-  navigation.querySelectorAll("a").forEach((el)=> {
-    let currentHref: string = el.getAttribute("href");
-    el.setAttribute("href", "/weather/" + currentHref);
-  })
+  const navigation: Element | null = document.querySelector(".head-row");
+  // @ts-ignore
+  navigation.querySelectorAll("a").forEach((el) => {
+    const currentHref: string | null = el.getAttribute("href");
+    el.setAttribute("href", `/weather${currentHref}`);
+  });
 }
 
 // https://api.openweathermap.org/data/2.5/weather?q=moscow&appid=fcc07198ebd405c615789afc7486fd29
