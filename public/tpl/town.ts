@@ -1,17 +1,19 @@
-// eslint-disable-next-line no-restricted-globals
-const url = location.search;
+export function town(): string | Array<any> {
+  /**/
+  // eslint-disable-next-line no-restricted-globals
+  const url = location.search;
 
-let townTpl = null;
-
-if (url !== null) {
-  const reg = /\w+/gi;
-  const townName = reg.exec(url);
-  townTpl = `
-    <div class="townName">${townName}</div
-  `;
-} else {
-  // eslint-disable-next-line no-unused-vars
-  townTpl = `
+  if (url !== "") {
+    const reg = /\w+/gi;
+    const townName = reg.exec(url);
+    // @ts-ignore
+    // eslint-disable-next-line max-len
+    return [
+      townName[0],
+      `<div class="townName">${townName}</div><div class="result"></div>`,
+    ];
+  }
+  return `
     <form id="enterCity">
       <div class="block">
         <label for="city">Введите город</label>
@@ -22,7 +24,7 @@ if (url !== null) {
         <button type="submit" id="enterCitySubmit">Отправить</button>
       </div>
     </form>
+    
+    <div class="result"></div>
   `;
 }
-
-export const town = townTpl;

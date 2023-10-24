@@ -1,5 +1,6 @@
-export const home = `
-          <form id="enterCity">
+export function home(): string {
+  return `
+  <form id="enterCity">
             <div class="block">
               <label for="city">Введите город</label>
                 <input type="text" id="city" />
@@ -12,5 +13,6 @@ export const home = `
 
          <div class="result"></div>
 
-         <div id="map" style="width: 600px; height: 400px"></div>
-`;
+         <div id="map"></div>
+  `;
+}
