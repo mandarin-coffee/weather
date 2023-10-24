@@ -8,7 +8,7 @@ module.exports = (env, argv) => {
   const isProduction = argv.mode === "production";
 
   return {
-    entry: "./public/index.ts",
+    entry: "./public/scripts/index.ts",
     resolve: {
       extensions: [".js", ".ts"],
     },
@@ -16,6 +16,7 @@ module.exports = (env, argv) => {
       path: path.resolve(__dirname, "dist"),
       filename: "js/[name]-[chunkhash].js",
       clean: true,
+      publicPath: "/",
     },
     plugins: [
       new HtmlWebpackPlugin({ template: "./public/index.html" }),

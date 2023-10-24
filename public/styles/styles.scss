@@ -23,10 +23,17 @@ body {
     justify-content: center;
   }
 
+  .logo {
+    max-width: 280px;
+    width: 100%;
+    min-width: 50px;
+  }
+
   .wrapper {
     max-width: 1200px;
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
   }
 
@@ -57,5 +64,41 @@ body {
 
   .mt50 {
     margin-top: 50px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    ul {
+      display: flex;
+      gap: 20px;
+    }
+  }
+
+  form {
+    display: flex;
+    gap: 20px;
+  }
+
+  .result {
+    display: flex;
+  }
+
+  #map {
+    max-width: 600px;
+    height: 400px;
+    width: 100%;
   }
 }

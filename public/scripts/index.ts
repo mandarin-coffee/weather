@@ -1,21 +1,8 @@
-import "./styles/styles.scss";
-import "./Router2.ts";
-
+import "../styles/styles.scss";
 // @ts-ignore
-import { setLocalStorage, getLocalStorage } from "./aside.ts";
+import { setLocalStorage, getLocalStorage } from "./aside";
 
-if (process.env.NODE_ENV === "production") {
-  const navigation: Element | null = document.querySelector(".head-row");
-  // @ts-ignore
-  navigation.querySelectorAll("a").forEach((el) => {
-    const currentHref: string | null = el.getAttribute("href");
-    el.setAttribute("href", `/weather${currentHref}`);
-  });
-}
-
-// https://api.openweathermap.org/data/2.5/weather?q=moscow&appid=fcc07198ebd405c615789afc7486fd29
-await handlerForm();
-userLocationWeather();
+getLocalStorage();
 
 export async function getWeatherCity(city: string) {
   const apiKey = "fcc07198ebd405c615789afc7486fd29";
@@ -34,7 +21,7 @@ export async function getWeatherCity(city: string) {
   }
 }
 
-export function handlerForm() {
+export async function handlerForm() {
   const form: Element = document.querySelector("#enterCity") as Element;
 
   if (form !== null) {
@@ -45,10 +32,21 @@ export function handlerForm() {
 
       const answer = await getWeatherCity(cityValue);
 
-      setLocalStorage(cityValue);
+      setLocalStorage(cityValue, answer.name);
 
       appendWeather(answer);
     });
+  }
+  try {
+    const coords: any = await getCoords();
+    // eslint-disable-next-line max-len
+    const answer: object = await getWeatherCoords(
+      coords.latitude,
+      coords.longitude,
+    );
+    appendWeather(answer);
+  } catch (error: any) {
+    console.error("Ошибка получения геопозиции:", error.message);
   }
 }
 
@@ -99,21 +97,6 @@ export async function getWeatherCoords(lat: string, lon: string) {
     // Обработка полученных данных
   } catch (error) {
     console.error("Error:", error);
-  }
-}
-
-export async function userLocationWeather() {
-  try {
-    const coords: any = await getCoords();
-    // eslint-disable-next-line max-len
-    const answer: object = await getWeatherCoords(
-      coords.latitude,
-      coords.longitude,
-    );
-    appendWeather(answer);
-    getLocalStorage();
-  } catch (error: any) {
-    console.error("Ошибка получения геопозиции:", error.message);
   }
 }
 
