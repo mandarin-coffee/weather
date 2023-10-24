@@ -2,6 +2,22 @@ import "../styles/styles.scss";
 // @ts-ignore
 import { setLocalStorage, getLocalStorage } from "./aside";
 
+if (process.env.NODE_ENV === "production") {
+  const navigation: Element | null = document.querySelector(".head-row");
+  // @ts-ignore
+  navigation.querySelectorAll("a").forEach((el) => {
+    const currentHref: string | null = el.getAttribute("href");
+    el.setAttribute("href", `/weather${currentHref}`);
+  });
+
+  const asideLinks: Element | null = document.querySelector("aside");
+  // @ts-ignore
+  asideLinks.querySelectorAll("a").forEach((el) => {
+    const currentHref: string | null = el.getAttribute("href");
+    el.setAttribute("href", `/weather${currentHref}`);
+  });
+}
+
 getLocalStorage();
 
 export async function getWeatherCity(city: string) {

@@ -4,26 +4,10 @@ import { about } from "../tpl/about";
 
 import { handlerForm, getWeatherCity, appendWeather } from "./index";
 
-export function initRouter(mode: string): void {
+export function initRouter(): void {
   /**/
   // eslint-disable-next-line no-restricted-globals
   render(location);
-
-  if (mode === "production") {
-    const navigation: Element | null = document.querySelector(".head-row");
-    // @ts-ignore
-    navigation.querySelectorAll("a").forEach((el) => {
-      const currentHref: string | null = el.getAttribute("href");
-      el.setAttribute("href", `/weather${currentHref}`);
-    });
-
-    const asideLinks: Element | null = document.querySelector("aside");
-    // @ts-ignore
-    asideLinks.querySelectorAll("a").forEach((el) => {
-      const currentHref: string | null = el.getAttribute("href");
-      el.setAttribute("href", `/weather${currentHref}`);
-    });
-  }
   // @ts-ignore
   const navigation = document.querySelectorAll("nav a");
   navigation.forEach((el: Element): void => {
