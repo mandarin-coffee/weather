@@ -1,5 +1,5 @@
 import "./styles/styles.scss";
-import "./Router2.ts";
+import "./Router.ts";
 
 // @ts-ignore
 import { setLocalStorage, getLocalStorage } from "./aside.ts";
@@ -11,9 +11,15 @@ if (process.env.NODE_ENV === "production") {
     const currentHref: string | null = el.getAttribute("href");
     el.setAttribute("href", `/weather${currentHref}`);
   });
+
+  const asideLinks: Element | null = document.querySelector("aside");
+  // @ts-ignore
+  asideLinks.querySelectorAll("a").forEach((el) => {
+    const currentHref: string | null = el.getAttribute("href");
+    el.setAttribute("href", `/weather${currentHref}`);
+  });
 }
 
-// https://api.openweathermap.org/data/2.5/weather?q=moscow&appid=fcc07198ebd405c615789afc7486fd29
 await handlerForm();
 userLocationWeather();
 
@@ -45,7 +51,7 @@ export function handlerForm() {
 
       const answer = await getWeatherCity(cityValue);
 
-      setLocalStorage(cityValue);
+      setLocalStorage(cityValue, answer.name);
 
       appendWeather(answer);
     });
