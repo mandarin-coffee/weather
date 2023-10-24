@@ -16,7 +16,7 @@ module.exports = (env, argv) => {
       path: path.resolve(__dirname, "dist"),
       filename: "js/[name]-[chunkhash].js",
       clean: true,
-      publicPath: "/weather",
+      publicPath: process.env.NODE_ENV === "production" ? "/weather" : "/",
     },
     plugins: [
       new HtmlWebpackPlugin({ template: "./public/index.html" }),
