@@ -4,6 +4,14 @@ import "./Router2.ts";
 // @ts-ignore
 import { setLocalStorage, getLocalStorage } from "./aside.ts";
 
+if (process.env.NODE_ENV === "production") {
+  const navigation: Element = document.querySelector('.head-row');
+  navigation.querySelectorAll("a").forEach((el)=> {
+    let currentHref: string = el.getAttribute("href");
+    el.setAttribute("href", "/weather/" + currentHref);
+  })
+}
+
 // https://api.openweathermap.org/data/2.5/weather?q=moscow&appid=fcc07198ebd405c615789afc7486fd29
 await handlerForm();
 userLocationWeather();
