@@ -6,7 +6,7 @@ export function getLocalStorage() {
   if (towns !== null) {
     appendAside(towns);
     // @ts-ignore
-    initRouter(process.env.NODE_ENV);
+    initRouter();
   }
 }
 
