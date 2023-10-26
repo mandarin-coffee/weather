@@ -2,7 +2,7 @@ import { home } from "../tpl/home";
 import { town } from "../tpl/town";
 import { about } from "../tpl/about";
 
-import { handlerForm, getWeatherCity, appendWeather } from "./index";
+import { handlerForm, getWeatherCity, appendWeather, loadPage } from "./index";
 
 export function initRouter(): void {
   /**/
@@ -52,6 +52,7 @@ export async function render(url: Object) {
   switch (url.pathname) {
     case "/":
       container.innerHTML = home();
+      loadPage();
       await handlerForm();
       break;
     case "/town":

@@ -39,10 +39,12 @@ export async function getWeatherCity(city: string) {
 
 export async function handlerForm() {
   const form: Element = document.querySelector("#enterCity") as Element;
-
+  // debugger;
   if (form !== null) {
     form.addEventListener("submit", async (event) => {
+      // debugger;
       event.preventDefault();
+      // почему при клике на кнопку идет обновление страницы?
       const getInput = form.querySelector("#city") as HTMLInputElement;
       const cityValue: string = getInput.value;
 
@@ -53,6 +55,10 @@ export async function handlerForm() {
       appendWeather(answer);
     });
   }
+}
+
+export async function loadPage(){
+  // debugger;
   try {
     const coords: any = await getCoords();
     // eslint-disable-next-line max-len

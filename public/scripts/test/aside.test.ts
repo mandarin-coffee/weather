@@ -14,15 +14,6 @@ const mockLocalStorage = {
 // @ts-ignore
 global.localStorage = mockLocalStorage;
 
-// Створіть моки для appendAside та initRouter
-jest.mock("./appendAsideModule", () => ({
-  appendAside: jest.fn(),
-}));
-
-jest.mock("./initRouterModule", () => ({
-  initRouter: jest.fn(),
-}));
-
 describe("getLocalStorage", () => {
   afterEach(() => {
     jest.clearAllMocks();
